@@ -1,7 +1,7 @@
 from django.shortcuts import render,HttpResponse,redirect
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
-from .models import Profile
+from .models import Profile,Item
 from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
@@ -14,6 +14,24 @@ def index(request):
     
 @login_required(login_url='login')
 def creation(request):
+    if request.method == "POST":
+        name = request.POST["list-name"]
+        description = request.POST["list-description"]
+        category = request.POST["category"]
+        status = request.POST["status"]
+        deadline = request.POST["deadline"]
+
+        user = request.user
+        
+        creation_info = Item.objects.create(
+            user=user,
+            name=name,
+            description=description,
+            category=category,
+            status=status,
+            deadline=deadline
+        )
+        return redirect('home')
     return render(request, 'listcreation.html')
 
 

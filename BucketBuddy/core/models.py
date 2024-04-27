@@ -14,15 +14,20 @@ class Profile(models.Model):
 
 
     def __str__(self):
-        return self.user.username\
+        return self.user.username
         
 
 class Item(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.TextField(blank=False)
     description = models.TextField()
-    Category = models.CharField(max_length=255)  
-    Status = models.CharField(max_length=255)
-    Deadline = models.DateTimeField(default=datetime.now())
+    category = models.CharField(max_length=255)  
+    status = models.CharField(max_length=255)
+    deadline = models.DateTimeField(default=datetime.now())
+
+
+    def __str__(self):
+        hello = self.user.username + "|Item: " +self.name
+        return hello
 
 
