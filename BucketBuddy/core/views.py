@@ -6,7 +6,16 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def index(request):
-        return render(request,"index.html")
+    if request.method == "POST":
+        pass
+            
+    else:
+        return render(request,'index.html')
+    
+@login_required(login_url='login')
+def creation(request):
+    return render(request, 'listcreation.html')
+
 
 def login(request):
     if request.method == "POST":
@@ -16,7 +25,7 @@ def login(request):
         user = auth.authenticate(username=username, password= password)
         if user is not None:
             auth.login(request,user)
-            return redirect('/')
+            return redirect('/home')
         else:
             messages.info(request, 'Invalid Info')
             return redirect('login')
@@ -26,7 +35,6 @@ def login(request):
 
 def register(request):
     if request.method == "POST":
-        pass
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']

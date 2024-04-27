@@ -1,0 +1,70 @@
+
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a New List - BucketBuddy</title>
+    <link rel="stylesheet" href="{%static 'creationstyle.css'%}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">BucketBuddy</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">My Bucket List</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <h2>Create a New List</h2>
+            <form method="POST" class="list-form">
+                {% csrf_token %}
+                <label for="list-name">List Name:</label>
+                <input type="text" id="list-name" name="list-name" required>
+                
+                <label for="list-description">Description:</label>
+                <textarea id="list-description" name="list-description" rows="4"></textarea>
+                <label for="category">Category:</label>
+                
+                <select id="category" name="category" required>
+                <option value="personal">Personal</option>
+                <option value="work">Work</option>
+                <option value="study">Study</option>
+                <option value="other">Other</option>
+                </select>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                <option value="not-started">Not Started</option>
+                <option value="in-progress">In Progress</option>
+                <option value="completed">Completed</option>
+                </select>
+
+                <label for="deadline">Deadline:</label>
+                <input type="date" id="deadline" name="deadline" required>
+
+                
+                <button type="submit" class="btn">Create List</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 BucketBuddy. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

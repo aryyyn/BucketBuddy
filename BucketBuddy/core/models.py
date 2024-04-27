@@ -19,6 +19,7 @@ class Profile(models.Model):
 
 class Item(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    name = models.TextField(blank=False)
     description = models.TextField()
     Category = models.CharField(max_length=255)  
     Status = models.CharField(max_length=255)

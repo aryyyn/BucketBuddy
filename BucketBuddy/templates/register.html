@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="{%static 'regstyle.css'%}">
 </head>
 <body>
-    <div>
+
+    <div class="container">
+
+        <h2>User Registration</h2>
         {%for message in messages%}
         <h5> {{message}}</h5>
         {%endfor%}
-    </div>
-    <div class="container">
-        <h2>User Registration</h2>
         <form action="" method="POST">
             {% csrf_token %}
             <div class="form-group">
@@ -30,7 +30,7 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
             </div>
-            <button type="submit">Register</button>
+            <button type="submit" >Register</button>
         </form>
     </div>
 </body>
