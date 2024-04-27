@@ -1,0 +1,44 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user.username }}'s Profile</title>
+    <link rel="stylesheet" href="{%static 'bucketlist.css'%}">
+</head>
+<body>
+
+    <header class="header">
+        {% comment %} <h4>User: {{user.username}}</h4> {% endcomment %}
+        <div class="container">
+            
+            <h1 class="logo">BucketBuddy</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="create">Create</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        {% if bucketlist %}
+            {% for list in bucketlist %}
+                <div class="bucket-list-item">
+                    <h2>{{ list.name }}</h2>
+                    <p>{{ list.description }}</p>
+                    <p>{{ list.category }}</p>
+                    <p>{{ list.status }}</p>
+                    <p>{{ list.deadline }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <h2>Nothing to display here</h2>
+            <a href="create" class="btn">Click me to start creating lists! </a>
+        {% endif %}
+    </div>
+</body>
+</html>

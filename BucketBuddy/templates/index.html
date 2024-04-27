@@ -12,12 +12,16 @@
 <body>
     <!-- Header -->
     <header class="header">
+        <h4>User: {{user.username}}</h4>
         <div class="container">
+            
             <h1 class="logo">BucketBuddy</h1>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">My Bucket List</a></li>
+                    <li><a href="">Home</a></li>
+                    <li><a href="home/list">My Bucket List</a></li>
+                    <li><a href="home/create">Create</a></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -28,7 +32,7 @@
         <div class="container">
             <h2>Welcome to BucketBuddy</h2>
             <p>Organize and manage your bucket list items with ease.</p>
-            <a href="#" class="btn">Get Started</a>
+            <a href="home/create" class="btn">Get Started</a>
         </div>
     </main>
 

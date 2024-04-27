@@ -12,6 +12,14 @@ def index(request):
     else:
         return render(request,'index.html')
     
+
+@login_required(login_url='login')
+def getCreationPage(request):
+    user = request.user
+    bucketList = Item.objects.filter(user=user)
+    print(bucketList)
+    return render(request,'bucketlist.html',{'bucketlist':bucketList})
+    
 @login_required(login_url='login')
 def creation(request):
     if request.method == "POST":
@@ -31,7 +39,7 @@ def creation(request):
             status=status,
             deadline=deadline
         )
-        return redirect('home')
+        return redirect('/home')
     return render(request, 'listcreation.html')
 
 
